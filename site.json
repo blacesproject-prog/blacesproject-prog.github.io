@@ -3,37 +3,33 @@
     "name": "BlaCes Project Technologies",
     "tagline": "Firma de Ingeniería Digital y Arquitectura de Soluciones",
     "description": "Convertimos desafíos complejos en soluciones digitales inteligentes.",
-    "location": {
-      "name": "Sede Operativa (Cali, Colombia)",
-      "maps_url": "https://www.google.com/maps/place/BlaCes+Project/@3.6383031,-76.1938679,17z/data=!3m1!4b1!4m6!3m5!1s0x8e39f751962dd407:0xdbc997bc18360ffb!8m2!3d3.6383031!4d-76.191293!16s%2Fg%2F11ryld6htp?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D"
-    }
+    "location_name": "Sede Operativa (Cali, Colombia)",
+    "location_maps_url": "https://www.google.com/maps/place/BlaCes+Project..."
+  },
+  "contact": {
+    "email": "blacesProjecct@gmail.com",
+    "whatsapp": "573174095029",
+    "linkedin_founder": "https://www.linkedin.com/in/cesarhzarate",
+    "github_org": "https://github.com/BlaCesProject"
   },
   "theme": {
     "colors": {
       "corporateDark": "#17324D",
       "actionBlue": "#2563A6",
-      "backgroundLight": "#F3F6FA",
-      "successGreen": "#28A745",
-      "techCyan": "#17A2B8"
+      "backgroundLight": "#F3F6FA"
     }
-  },
-  "contact": {
-    "email": "hola.balcesproject@gmail.com",
-    "whatsapp": "+570000000000",
-    "linkedin_founder": "https://www.linkedin.com/in/cesarhzarate",
-    "github_org": "https://github.com/BlaCesProject"
   },
   "services": [
     {
       "id": "srv-01",
       "title": "Arquitectura y estrategia tecnológica",
-      "description": "Diagnóstico tecnológico, modernización de plataformas, decisiones de arquitectura, gobierno de TI y hojas de ruta digitales.",
+      "description": "Diagnóstico tecnológico, modernización de plataformas, decisiones de arquitectura y hojas de ruta digitales.   ¡Prueba exitosa!",
       "icon": "fa-network-wired"
     },
     {
       "id": "srv-02",
       "title": "Ingeniería de software y automatización",
-      "description": "Python, aplicaciones de escritorio, procesamiento masivo, automatización documental y eliminación de tareas repetitivas.",
+      "description": "Python, aplicaciones de escritorio, procesamiento masivo y eliminación de tareas repetitivas.",
       "icon": "fa-cogs"
     },
     {
@@ -45,29 +41,29 @@
     {
       "id": "srv-04",
       "title": "Datos, informes y conocimiento operativo",
-      "description": "Informes dinámicos, documentación técnica, tableros de indicadores, automatización de hojas de cálculo y trazabilidad.",
+      "description": "Informes dinámicos, documentación técnica, tableros de indicadores y automatización de hojas de cálculo.",
       "icon": "fa-chart-line"
     },
     {
       "id": "srv-05",
       "title": "Consultoría y transformación empresarial",
-      "description": "Acompañamiento a directivos, análisis de procesos, evaluación de soluciones y gestión de iniciativas tecnológicas.",
+      "description": "Acompañamiento a directivos, análisis de procesos, evaluación de soluciones y gestión de iniciativas.",
       "icon": "fa-user-tie"
     },
     {
       "id": "srv-06",
       "title": "Productos digitales y soluciones especializadas",
-      "description": "Media GeoOrganizer Pro, microherramientas, soluciones sectoriales y productos que evolucionan según necesidades reales.",
+      "description": "Media GeoOrganizer Pro, microherramientas, soluciones sectoriales y productos evolutivos.",
       "icon": "fa-laptop-code"
     }
   ],
   "portfolio": [
     {
       "id": "prj-01",
-      "title": "Sistema Integrado de Administración (SIA Personal)",
+      "title": "Sistema Integrado de Administración (SIA)",
       "category": "srv-04",
       "short_desc": "Arquitectura financiera automatizada conectando extractos bancarios mediante Python y Google Sheets.",
-      "doc_link": "URL_AL_GOOGLE_DOC_DEL_CASO_DE_EXITO"
+      "doc_link": "https://docs.google.com/..."
     }
   ]
 }
