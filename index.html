@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargando... | BlaCes Project</title>
+    <!-- Tailwind CSS para estilos rápidos y limpios -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variables CSS que se actualizarán dinámicamente desde site.json */
+        :root {
+            --corporate-dark: #17324D;
+            --action-blue: #2563A6;
+            --bg-light: #F3F6FA;
+        }
+        body {
+            background-color: var(--bg-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        .hero-section {
+            background-color: var(--corporate-dark);
+            color: white;
+        }
+        .btn-primary {
+            background-color: var(--action-blue);
+            color: white;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero Section -->
+    <header class="hero-section py-20 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 id="brand-name" class="text-4xl md:text-6xl font-bold mb-4">Cargando...</h1>
+            <p id="brand-tagline" class="text-xl md:text-2xl mb-8 opacity-90"></p>
+            <p id="brand-desc" class="mb-10 max-w-2xl mx-auto text-lg"></p>
+            <a id="contact-btn" href="#" class="btn-primary py-3 px-8 rounded-full font-semibold text-lg transition inline-block">Contactar</a>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section class="py-16 px-6 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12" style="color: var(--corporate-dark);">Nuestras Soluciones</h2>
+        <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Los servicios se inyectarán aquí mediante JS -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="hero-section py-8 text-center mt-12">
+        <p>&copy; <span id="current-year"></span> <span id="footer-name"></span>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script para cargar datos de site.json -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Cargar el archivo de configuración
+            fetch('site.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al cargar la configuración.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // 1. Aplicar Colores del Tema
+                    document.documentElement.style.setProperty('--corporate-dark', data.theme.colors.corporateDark);
+                    document.documentElement.style.setProperty('--action-blue', data.theme.colors.actionBlue);
+                    document.documentElement.style.setProperty('--bg-light', data.theme.colors.backgroundLight);
+
+                    // 2. Poblar Datos de Marca
+                    document.title = data.brand.name + " | " + data.brand.tagline;
+                    document.getElementById('brand-name').textContent = data.brand.name;
+                    document.getElementById('brand-tagline').textContent = data.brand.tagline;
+                    document.getElementById('brand-desc').textContent = data.brand.description;
+                    document.getElementById('footer-name').textContent = data.brand.name;
+                    
+                    // Botón de contacto usando WhatsApp
+                    document.getElementById('contact-btn').href = "https://wa.me/" + data.contact.whatsapp.replace('+', '');
+
+                    // 3. Renderizar Servicios
+                    const servicesGrid = document.getElementById('services-grid');
+                    data.services.forEach(service => {
+                        const card = document.createElement('div');
+                        card.className = 'service-card p-8 border border-gray-100';
+                        card.innerHTML = `
+                            <div class="text-4xl mb-4" style="color: var(--action-blue);">
+                                <i class="fas ${service.icon}"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3" style="color: var(--corporate-dark);">${service.title}</h3>
+                            <p class="text-gray-600 leading-relaxed">${service.description}</p>
+                        `;
+                        servicesGrid.appendChild(card);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('brand-name').textContent = "Error al cargar configuración";
+                });
+        });
+    </script>
+</body>
+</html>
