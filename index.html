@@ -1,148 +1,249 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cargando... | BlaCes Project</title>
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (Framework de diseño ágil) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
+    <!-- FontAwesome (Íconos) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
+        /* Variables Base (Se sobrescriben con tu JSON) */
         :root {
-            --corporate-dark: #17324D;
-            --action-blue: #2563A6;
-            --bg-light: #F3F6FA;
-            --tech-cyan: #17A2B8;
+            --c-dark: #17324D;
+            --c-blue: #2563A6;
+            --c-light: #F3F6FA;
         }
-        body {
-            background-color: var(--bg-light);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        body { 
+            background-color: var(--c-light); 
+            font-family: 'Inter', sans-serif; 
             color: #333;
         }
-        .hero-section {
-            background-color: var(--corporate-dark);
-            color: white;
-        }
+        /* Clases utilitarias dinámicas */
+        .bg-corporate { background-color: var(--c-dark); }
+        .text-corporate { color: var(--c-dark); }
+        .bg-action { background-color: var(--c-blue); }
+        .text-action { color: var(--c-blue); }
+        
+        /* Botones y Tarjetas */
         .btn-primary {
-            background-color: var(--action-blue);
+            background-color: var(--c-blue); 
             color: white;
-        }
-        .btn-primary:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-        .card-hover {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
         }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        .btn-primary:hover { 
+            filter: brightness(1.15); 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 166, 0.4); 
+        }
+        .card-service {
+            background: #ffffff; 
+            border-radius: 12px; 
+            transition: all 0.3s ease; 
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .card-service:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); 
+            border-bottom: 4px solid var(--c-blue);
+        }
+        .card-portfolio {
+            background: #ffffff;
+            border-radius: 12px;
+            border-left: 6px solid var(--c-blue);
+            transition: all 0.3s ease;
+        }
+        .card-portfolio:hover {
+            box-shadow: 0 15px 30px -5px rgba(0,0,0,0.1);
+            transform: translateX(5px);
         }
     </style>
 </head>
-<body>
+<body class="flex flex-col min-h-screen antialiased">
 
-    <!-- Header / Hero Section -->
-    <header class="hero-section py-20 px-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h1 id="brand-name" class="text-4xl md:text-6xl font-bold mb-4">Cargando...</h1>
-            <p id="brand-tagline" class="text-xl md:text-2xl mb-8 opacity-90"></p>
-            <p id="brand-desc" class="mb-10 max-w-2xl mx-auto text-lg"></p>
-            <a id="contact-btn" href="#" class="btn-primary py-3 px-8 rounded-full font-semibold text-lg transition inline-block shadow-lg">Contactar</a>
+    <!-- Navbar / Barra de Navegación -->
+    <nav class="bg-corporate text-white py-4 px-6 sticky top-0 z-50 shadow-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="font-bold text-xl tracking-wider flex items-center gap-3">
+                <i class="fas fa-microchip text-action text-2xl"></i>
+                <span id="nav-brand">BlaCes</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-wide">
+                <a href="#servicios" class="hover:text-action transition-colors">Soluciones</a>
+                <a href="#portafolio" class="hover:text-action transition-colors">Ingeniería y Casos</a>
+            </div>
+            <div>
+                <a id="nav-contact" href="#" class="btn-primary py-2 px-5 rounded-md font-semibold text-sm hidden md:inline-block">Hablemos</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Encabezado Principal) -->
+    <header class="bg-corporate text-white py-28 px-6 relative overflow-hidden">
+        <!-- Elementos decorativos de fondo -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none">
+            <div class="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full border-[10px] border-white"></div>
+            <div class="absolute bottom-10 left-10 w-64 h-64 rounded-full border-4 border-white"></div>
+        </div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-block mb-6 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-sm font-semibold tracking-widest uppercase text-action backdrop-blur-sm" id="hero-tagline">
+                Cargando...
+            </div>
+            <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tight">
+                Cargando...
+            </h1>
+            <p id="hero-desc" class="text-xl md:text-2xl mb-12 text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+                ...
+            </p>
+            <div class="flex justify-center gap-4">
+                <a id="hero-btn" href="#" class="btn-primary py-4 px-10 rounded-lg font-bold text-lg flex items-center gap-3 shadow-lg">
+                    Iniciar Evaluación Tecnológica <i class="fab fa-whatsapp text-xl"></i>
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- Services Section -->
-    <section class="py-16 px-6 max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-12" style="color: var(--corporate-dark);">Nuestras Soluciones</h2>
-        <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Los servicios se inyectarán aquí -->
-        </div>
-    </section>
+    <!-- Sección de Servicios / Arquitectura -->
+    <main class="flex-grow">
+        <section id="servicios" class="py-24 px-6 max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-corporate mb-4">Arquitectura de Soluciones</h2>
+                <div class="h-1.5 w-24 bg-action mx-auto rounded"></div>
+            </div>
+            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Se inyecta dinámicamente -->
+            </div>
+        </section>
 
-    <!-- Portfolio Section NUEVA -->
-    <section class="py-16 px-6 max-w-6xl mx-auto border-t border-gray-200">
-        <h2 class="text-3xl font-bold text-center mb-4" style="color: var(--corporate-dark);">Casos de Éxito e Ingeniería</h2>
-        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Explora la arquitectura técnica y los resultados de nuestros proyectos más recientes.</p>
-        
-        <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Los proyectos del portafolio se inyectarán aquí -->
-        </div>
-    </section>
+        <!-- Sección de Portafolio / Casos de Éxito -->
+        <section id="portafolio" class="py-24 px-6 bg-white border-t border-gray-100 shadow-inner">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 md:flex justify-between items-end">
+                    <div class="max-w-2xl">
+                        <h2 class="text-4xl font-extrabold text-corporate mb-4">Ingeniería Aplicada</h2>
+                        <div class="h-1.5 w-24 bg-action rounded mb-6"></div>
+                        <p class="text-gray-500 text-lg">Explora la profundidad técnica y el impacto de negocio de nuestras implementaciones recientes y casos de éxito reales.</p>
+                    </div>
+                </div>
+                <div id="portfolio-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <!-- Se inyecta dinámicamente -->
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="hero-section py-8 text-center mt-12">
-        <p>&copy; <span id="current-year"></span> <span id="footer-name"></span>. Todos los derechos reservados.</p>
+    <footer class="bg-corporate text-white py-12 border-t border-white/10 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3 font-bold text-xl opacity-90">
+                <i class="fas fa-microchip text-action"></i>
+                <span id="footer-brand">BlaCes</span>
+            </div>
+            <div class="text-gray-400 text-sm font-medium">
+                &copy; <span id="current-year"></span> Todos los derechos reservados.
+            </div>
+            <div class="flex gap-6">
+                <a id="footer-linkedin" href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors text-2xl" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a id="footer-github" href="#" target="_blank" class="text-gray-400 hover:text-white transition-colors text-2xl" title="GitHub"><i class="fab fa-github"></i></a>
+                <a id="footer-email" href="#" class="text-gray-400 hover:text-white transition-colors text-2xl" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Script de Integración Headless -->
+    <!-- Lógica de Arquitectura Headless (Fetch del JSON) -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('current-year').textContent = new Date().getFullYear();
 
             fetch('site.json')
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) throw new Error('Error al cargar site.json');
+                    return response.json();
+                })
                 .then(data => {
-                    // 1. Colores
-                    document.documentElement.style.setProperty('--corporate-dark', data.theme.colors.corporateDark);
-                    document.documentElement.style.setProperty('--action-blue', data.theme.colors.actionBlue);
-                    document.documentElement.style.setProperty('--bg-light', data.theme.colors.backgroundLight);
+                    // 1. Configurar Variables de Color CSS dinámicamente
+                    document.documentElement.style.setProperty('--c-dark', data.theme.colors.corporateDark);
+                    document.documentElement.style.setProperty('--c-blue', data.theme.colors.actionBlue);
+                    document.documentElement.style.setProperty('--c-light', data.theme.colors.backgroundLight);
 
-                    // 2. Marca y Contacto
+                    // 2. Llenar Textos Principales
+                    const shortName = data.brand.name.split(' ')[0]; // Extrae "BlaCes"
                     document.title = data.brand.name + " | " + data.brand.tagline;
-                    document.getElementById('brand-name').textContent = data.brand.name;
-                    document.getElementById('brand-tagline').textContent = data.brand.tagline;
-                    document.getElementById('brand-desc').textContent = data.brand.description;
-                    document.getElementById('footer-name').textContent = data.brand.name;
-                    document.getElementById('contact-btn').href = "https://wa.me/" + data.contact.whatsapp.replace('+', '');
+                    
+                    document.getElementById('nav-brand').textContent = shortName;
+                    document.getElementById('footer-brand').textContent = data.brand.name;
+                    
+                    document.getElementById('hero-title').textContent = data.brand.name;
+                    document.getElementById('hero-tagline').textContent = data.brand.tagline;
+                    document.getElementById('hero-desc').textContent = data.brand.description;
 
-                    // 3. Renderizar Servicios
+                    // 3. Configurar Enlaces de Contacto
+                    const cleanPhone = data.contact.whatsapp.replace(/\D/g, ''); // Limpiar signos
+                    const waLink = `https://wa.me/${cleanPhone}`;
+                    document.getElementById('hero-btn').href = waLink;
+                    document.getElementById('nav-contact').href = waLink;
+                    
+                    document.getElementById('footer-linkedin').href = data.contact.linkedin_founder;
+                    document.getElementById('footer-github').href = data.contact.github_org;
+                    document.getElementById('footer-email').href = `mailto:${data.contact.email}`;
+
+                    // 4. Renderizar Cuadrícula de Servicios
                     const servicesGrid = document.getElementById('services-grid');
-                    servicesGrid.innerHTML = ''; // Limpiar
+                    servicesGrid.innerHTML = ''; 
                     data.services.forEach(service => {
                         const card = document.createElement('div');
-                        card.className = 'card-hover p-8 border border-gray-100';
+                        card.className = 'card-service p-8 lg:p-10';
                         card.innerHTML = `
-                            <div class="text-4xl mb-4" style="color: var(--action-blue);">
+                            <div class="text-4xl mb-6 text-action">
                                 <i class="fas ${service.icon}"></i>
                             </div>
-                            <h3 class="text-xl font-bold mb-3" style="color: var(--corporate-dark);">${service.title}</h3>
-                            <p class="text-gray-600 leading-relaxed">${service.description}</p>
+                            <h3 class="text-2xl font-bold mb-4 text-corporate">${service.title}</h3>
+                            <p class="text-gray-600 leading-relaxed font-medium">${service.description}</p>
                         `;
                         servicesGrid.appendChild(card);
                     });
 
-                    // 4. Renderizar Portafolio
+                    // 5. Renderizar Cuadrícula de Portafolio
                     const portfolioGrid = document.getElementById('portfolio-grid');
-                    portfolioGrid.innerHTML = ''; // Limpiar
+                    portfolioGrid.innerHTML = '';
                     
                     if (data.portfolio && data.portfolio.length > 0) {
                         data.portfolio.forEach(project => {
+                            // Buscar el nombre del servicio relacionado (Opcional, para la etiqueta)
+                            const relatedService = data.services.find(s => s.id === project.category);
+                            const serviceTag = relatedService ? relatedService.title : 'Ingeniería';
+
                             const card = document.createElement('div');
-                            card.className = 'card-hover p-8 border-l-4 border-blue-600';
-                            card.style.borderColor = 'var(--action-blue)';
+                            card.className = 'card-portfolio p-8 lg:p-10 flex flex-col justify-between';
                             card.innerHTML = `
-                                <div class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">PROYECTO #${project.id.split('-')[1]}</div>
-                                <h3 class="text-2xl font-bold mb-3" style="color: var(--corporate-dark);">${project.title}</h3>
-                                <p class="text-gray-700 mb-6 leading-relaxed">${project.short_desc}</p>
-                                <a href="${project.doc_link}" target="_blank" rel="noopener noreferrer" 
-                                   class="inline-block font-semibold hover:underline" style="color: var(--action-blue);">
-                                   Leer documento técnico <i class="fas fa-external-link-alt ml-1 text-sm"></i>
-                                </a>
+                                <div>
+                                    <div class="text-xs font-extrabold uppercase tracking-widest mb-3 text-gray-400">
+                                        <i class="fas fa-tag mr-1 text-action"></i> ${serviceTag}
+                                    </div>
+                                    <h3 class="text-2xl lg:text-3xl font-bold mb-4 text-corporate leading-tight">${project.title}</h3>
+                                    <p class="text-gray-600 mb-8 leading-relaxed font-medium text-lg">${project.short_desc}</p>
+                                </div>
+                                <div>
+                                    <a href="${project.doc_link}" target="_blank" rel="noopener noreferrer" 
+                                       class="inline-flex items-center font-bold text-action hover:text-corporate transition-colors">
+                                       Ver Arquitectura Técnica <i class="fas fa-arrow-right ml-2"></i>
+                                    </a>
+                                </div>
                             `;
                             portfolioGrid.appendChild(card);
                         });
                     } else {
-                        portfolioGrid.innerHTML = '<p class="text-gray-500 col-span-full text-center">Próximamente publicaremos nuestros casos de estudio.</p>';
+                        portfolioGrid.innerHTML = '<p class="text-gray-500 text-lg">Próximamente publicaremos nuestros casos de estudio.</p>';
                     }
                 })
                 .catch(error => {
-                    console.error('Error cargando site.json:', error);
+                    console.error('Error cargando la configuración:', error);
+                    document.getElementById('hero-title').textContent = "Sitio en mantenimiento";
                 });
         });
     </script>
