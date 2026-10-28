@@ -7,7 +7,7 @@
     "location_maps_url": "https://www.google.com/maps/place/BlaCes+Project..."
   },
   "contact": {
-    "email": "blacesProjecct@gmail.com",
+    "email": "hola.blacesproject@gmail.com",
     "whatsapp": "573174095029",
     "linkedin_founder": "https://www.linkedin.com/in/cesarhzarate",
     "github_org": "https://github.com/BlaCesProject"
@@ -60,10 +60,10 @@
   "portfolio": [
     {
       "id": "prj-01",
-      "title": "Sistema Integrado de Administración (SIA)",
-      "category": "srv-04",
-      "short_desc": "Arquitectura financiera automatizada conectando extractos bancarios mediante Python y Google Sheets.",
-      "doc_link": "https://docs.google.com/..."
+      "title": "Plataforma Web y Directorio Dinámico: Metidos en el Cuento",
+      "category": "srv-03",
+      "short_desc": "Arquitectura web desacoplada (Headless CMS) integrando Google Sheets, Apps Script, geocodificación con mapas y frontend en GitHub.",
+      "doc_link": "https://docs.google.com/document/... (Aquí pondremos el enlace real más adelante)"
     }
   ]
 }
