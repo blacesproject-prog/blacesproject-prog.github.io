@@ -153,96 +153,89 @@
                 <a id="footer-email" href="#" class="text-gray-400 hover:text-white transition-colors text-2xl" title="Email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
-        <!-- Modal de Contacto -->
-        <div id="contact-modal" class="fixed inset-0 bg-corporate/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4">
-            <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl relative overflow-hidden transform transition-all">
-                <!-- Botón Cerrar -->
-                <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-corporate text-2xl transition-colors">
-                    <i class="fas fa-times"></i>
-                </button>
-            
-                <div class="p-8">
-                    <h3 class="text-2xl font-bold text-corporate mb-2">Evaluación Tecnológica</h3>
-                    <p class="text-gray-500 mb-6 text-sm">Cuéntanos sobre el desafío de tu empresa. Te responderemos en menos de 24 horas.</p>
-                
-                    <form id="lead-form" class="space-y-4">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Nombre</label>
-                                <input type="text" id="form-nombre" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-action focus:border-action outline-none transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Empresa</label>
-                                <input type="text" id="form-empresa" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-action focus:border-action outline-none transition-all">
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Correo</label>
-                                <input type="email" id="form-correo" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-action focus:border-action outline-none transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">WhatsApp</label>
-                                <input type="tel" id="form-telefono" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-action focus:border-action outline-none transition-all">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">¿Qué necesitas resolver?</label>
-                            <textarea id="form-mensaje" rows="3" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-action focus:border-action outline-none transition-all resize-none"></textarea>
-                        </div>
-                    
-                        <button type="submit" id="submit-btn" class="w-full btn-primary py-3 rounded-lg font-bold mt-4 flex justify-center items-center gap-2">
-                            <span>Enviar Solicitud</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    
-                        <!-- Mensaje de Estado -->
-                        <div id="form-status" class="hidden mt-4 p-3 rounded-lg text-sm text-center font-medium"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    
     </footer>
 
-    <!-- Lógica de Arquitectura Headless (Fetch del JSON) -->
+    <!-- Modal de Contacto -->
+    <div id="contact-modal" class="fixed inset-0 bg-corporate/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4 transition-opacity">
+        <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl relative overflow-hidden">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-corporate text-2xl transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="p-8">
+                <h3 class="text-2xl font-bold text-corporate mb-2">Evaluación Tecnológica</h3>
+                <p class="text-gray-500 mb-6 text-sm">Cuéntanos sobre el desafío de tu empresa. Te responderemos en menos de 24 horas.</p>
+                
+                <form id="lead-form" class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Nombre</label>
+                            <input type="text" id="form-nombre" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-action focus:border-action outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Empresa</label>
+                            <input type="text" id="form-empresa" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-action focus:border-action outline-none transition-all">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Correo</label>
+                            <input type="email" id="form-correo" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-action focus:border-action outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">WhatsApp</label>
+                            <input type="tel" id="form-telefono" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-action focus:border-action outline-none transition-all">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">¿Qué necesitas resolver?</label>
+                        <textarea id="form-mensaje" rows="3" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-action focus:border-action outline-none transition-all resize-none"></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submit-btn" class="w-full btn-primary py-3 rounded-lg font-bold mt-4 flex justify-center items-center gap-2">
+                        <span>Enviar Solicitud</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    
+                    <div id="form-status" class="hidden mt-4 p-3 rounded-lg text-sm text-center font-medium"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lógica de Arquitectura Headless (Fetch del JSON) y Modal -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('current-year').textContent = new Date().getFullYear();
 
+            // 1. Cargar Datos JSON
             fetch('site.json')
                 .then(response => {
                     if (!response.ok) throw new Error('Error al cargar site.json');
                     return response.json();
                 })
                 .then(data => {
-                    // 1. Configurar Variables de Color CSS dinámicamente
                     document.documentElement.style.setProperty('--c-dark', data.theme.colors.corporateDark);
                     document.documentElement.style.setProperty('--c-blue', data.theme.colors.actionBlue);
                     document.documentElement.style.setProperty('--c-light', data.theme.colors.backgroundLight);
 
-                    // 2. Llenar Textos Principales
-                    const shortName = data.brand.name.split(' ')[0]; // Extrae "BlaCes"
+                    const shortName = data.brand.name.split(' ')[0];
                     document.title = data.brand.name + " | " + data.brand.tagline;
                     
                     document.getElementById('nav-brand').textContent = shortName;
                     document.getElementById('footer-brand').textContent = data.brand.name;
-                    
                     document.getElementById('hero-title').textContent = data.brand.name;
                     document.getElementById('hero-tagline').textContent = data.brand.tagline;
                     document.getElementById('hero-desc').textContent = data.brand.description;
 
-                    // 3. Configurar Enlaces de Contacto
-                    const cleanPhone = data.contact.whatsapp.replace(/\D/g, ''); // Limpiar signos
+                    const cleanPhone = data.contact.whatsapp.replace(/\D/g, '');
                     const waLink = `https://wa.me/${cleanPhone}`;
                     document.getElementById('hero-btn').href = waLink;
-                    document.getElementById('nav-contact').href = waLink;
                     
                     document.getElementById('footer-linkedin').href = data.contact.linkedin_founder;
                     document.getElementById('footer-github').href = data.contact.github_org;
                     document.getElementById('footer-email').href = `mailto:${data.contact.email}`;
 
-                    // 4. Renderizar Cuadrícula de Servicios
                     const servicesGrid = document.getElementById('services-grid');
                     servicesGrid.innerHTML = ''; 
                     data.services.forEach(service => {
@@ -258,16 +251,12 @@
                         servicesGrid.appendChild(card);
                     });
 
-                    // 5. Renderizar Cuadrícula de Portafolio
                     const portfolioGrid = document.getElementById('portfolio-grid');
                     portfolioGrid.innerHTML = '';
-                    
                     if (data.portfolio && data.portfolio.length > 0) {
                         data.portfolio.forEach(project => {
-                            // Buscar el nombre del servicio relacionado (Opcional, para la etiqueta)
                             const relatedService = data.services.find(s => s.id === project.category);
                             const serviceTag = relatedService ? relatedService.title : 'Ingeniería';
-
                             const card = document.createElement('div');
                             card.className = 'card-portfolio p-8 lg:p-10 flex flex-col justify-between';
                             card.innerHTML = `
@@ -292,9 +281,85 @@
                     }
                 })
                 .catch(error => {
-                    console.error('Error cargando la configuración:', error);
-                    document.getElementById('hero-title').textContent = "Sitio en mantenimiento";
+                    console.error('Error cargando configuración:', error);
                 });
+
+            // 2. Lógica del Modal y Envío de Formulario
+            const modal = document.getElementById('contact-modal');
+            const navContactBtn = document.getElementById('nav-contact');
+            const closeModalBtn = document.getElementById('close-modal');
+            const form = document.getElementById('lead-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const statusDiv = document.getElementById('form-status');
+
+            // Abrir Modal
+            navContactBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.remove('hidden');
+            });
+
+            // Cerrar Modal
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                statusDiv.classList.add('hidden');
+            });
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    statusDiv.classList.add('hidden');
+                }
+            });
+
+            // Enviar Datos
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Enviando...';
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-70');
+                statusDiv.classList.add('hidden');
+
+                const formData = {
+                    nombre: document.getElementById('form-nombre').value,
+                    empresa: document.getElementById('form-empresa').value,
+                    correo: document.getElementById('form-correo').value,
+                    telefono: document.getElementById('form-telefono').value,
+                    mensaje: document.getElementById('form-mensaje').value
+                };
+
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbzKHHQOIG77baX7G4jkDjkZVvS3noCTpFwcMfcBz_8Ep4H8gismTro4ps31ElCrQb_vYw/exec';
+
+                fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                })
+                .then(() => {
+                    submitBtn.innerHTML = '<span>Enviar Solicitud</span> <i class="fas fa-paper-plane"></i>';
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-70');
+                    
+                    statusDiv.textContent = '¡Solicitud enviada! Te contactaremos pronto.';
+                    statusDiv.className = 'mt-4 p-3 rounded-lg text-sm text-center font-medium bg-green-100 text-green-800 border border-green-200';
+                    statusDiv.classList.remove('hidden');
+                    
+                    form.reset();
+                    setTimeout(() => { 
+                        modal.classList.add('hidden'); 
+                        statusDiv.classList.add('hidden'); 
+                    }, 3000);
+                })
+                .catch(error => {
+                    submitBtn.innerHTML = '<span>Enviar Solicitud</span> <i class="fas fa-paper-plane"></i>';
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-70');
+                    
+                    statusDiv.textContent = 'Hubo un error de conexión. Intenta de nuevo.';
+                    statusDiv.className = 'mt-4 p-3 rounded-lg text-sm text-center font-medium bg-red-100 text-red-800 border border-red-200';
+                    statusDiv.classList.remove('hidden');
+                });
+            });
         });
     </script>
 </body>
