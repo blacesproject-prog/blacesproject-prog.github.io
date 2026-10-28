@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cargando... | BlaCes Project</title>
-    <!-- Tailwind CSS para estilos rápidos y limpios -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome para íconos -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Variables CSS que se actualizarán dinámicamente desde site.json */
         :root {
             --corporate-dark: #17324D;
             --action-blue: #2563A6;
             --bg-light: #F3F6FA;
+            --tech-cyan: #17A2B8;
         }
         body {
             background-color: var(--bg-light);
@@ -31,15 +31,17 @@
         }
         .btn-primary:hover {
             opacity: 0.9;
+            transform: translateY(-2px);
         }
-        .service-card {
+        .card-hover {
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
-        .service-card:hover {
+        .card-hover:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -51,7 +53,7 @@
             <h1 id="brand-name" class="text-4xl md:text-6xl font-bold mb-4">Cargando...</h1>
             <p id="brand-tagline" class="text-xl md:text-2xl mb-8 opacity-90"></p>
             <p id="brand-desc" class="mb-10 max-w-2xl mx-auto text-lg"></p>
-            <a id="contact-btn" href="#" class="btn-primary py-3 px-8 rounded-full font-semibold text-lg transition inline-block">Contactar</a>
+            <a id="contact-btn" href="#" class="btn-primary py-3 px-8 rounded-full font-semibold text-lg transition inline-block shadow-lg">Contactar</a>
         </div>
     </header>
 
@@ -59,7 +61,17 @@
     <section class="py-16 px-6 max-w-6xl mx-auto">
         <h2 class="text-3xl font-bold text-center mb-12" style="color: var(--corporate-dark);">Nuestras Soluciones</h2>
         <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Los servicios se inyectarán aquí mediante JS -->
+            <!-- Los servicios se inyectarán aquí -->
+        </div>
+    </section>
+
+    <!-- Portfolio Section NUEVA -->
+    <section class="py-16 px-6 max-w-6xl mx-auto border-t border-gray-200">
+        <h2 class="text-3xl font-bold text-center mb-4" style="color: var(--corporate-dark);">Casos de Éxito e Ingeniería</h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Explora la arquitectura técnica y los resultados de nuestros proyectos más recientes.</p>
+        
+        <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Los proyectos del portafolio se inyectarán aquí -->
         </div>
     </section>
 
@@ -68,40 +80,33 @@
         <p>&copy; <span id="current-year"></span> <span id="footer-name"></span>. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script para cargar datos de site.json -->
+    <!-- Script de Integración Headless -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            // Cargar el archivo de configuración
             fetch('site.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error al cargar la configuración.');
-                    }
-                    return response.json();
-                })
+                .then(response => response.json())
                 .then(data => {
-                    // 1. Aplicar Colores del Tema
+                    // 1. Colores
                     document.documentElement.style.setProperty('--corporate-dark', data.theme.colors.corporateDark);
                     document.documentElement.style.setProperty('--action-blue', data.theme.colors.actionBlue);
                     document.documentElement.style.setProperty('--bg-light', data.theme.colors.backgroundLight);
 
-                    // 2. Poblar Datos de Marca
+                    // 2. Marca y Contacto
                     document.title = data.brand.name + " | " + data.brand.tagline;
                     document.getElementById('brand-name').textContent = data.brand.name;
                     document.getElementById('brand-tagline').textContent = data.brand.tagline;
                     document.getElementById('brand-desc').textContent = data.brand.description;
                     document.getElementById('footer-name').textContent = data.brand.name;
-                    
-                    // Botón de contacto usando WhatsApp
                     document.getElementById('contact-btn').href = "https://wa.me/" + data.contact.whatsapp.replace('+', '');
 
                     // 3. Renderizar Servicios
                     const servicesGrid = document.getElementById('services-grid');
+                    servicesGrid.innerHTML = ''; // Limpiar
                     data.services.forEach(service => {
                         const card = document.createElement('div');
-                        card.className = 'service-card p-8 border border-gray-100';
+                        card.className = 'card-hover p-8 border border-gray-100';
                         card.innerHTML = `
                             <div class="text-4xl mb-4" style="color: var(--action-blue);">
                                 <i class="fas ${service.icon}"></i>
@@ -111,10 +116,33 @@
                         `;
                         servicesGrid.appendChild(card);
                     });
+
+                    // 4. Renderizar Portafolio
+                    const portfolioGrid = document.getElementById('portfolio-grid');
+                    portfolioGrid.innerHTML = ''; // Limpiar
+                    
+                    if (data.portfolio && data.portfolio.length > 0) {
+                        data.portfolio.forEach(project => {
+                            const card = document.createElement('div');
+                            card.className = 'card-hover p-8 border-l-4 border-blue-600';
+                            card.style.borderColor = 'var(--action-blue)';
+                            card.innerHTML = `
+                                <div class="text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">PROYECTO #${project.id.split('-')[1]}</div>
+                                <h3 class="text-2xl font-bold mb-3" style="color: var(--corporate-dark);">${project.title}</h3>
+                                <p class="text-gray-700 mb-6 leading-relaxed">${project.short_desc}</p>
+                                <a href="${project.doc_link}" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-block font-semibold hover:underline" style="color: var(--action-blue);">
+                                   Leer documento técnico <i class="fas fa-external-link-alt ml-1 text-sm"></i>
+                                </a>
+                            `;
+                            portfolioGrid.appendChild(card);
+                        });
+                    } else {
+                        portfolioGrid.innerHTML = '<p class="text-gray-500 col-span-full text-center">Próximamente publicaremos nuestros casos de estudio.</p>';
+                    }
                 })
                 .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('brand-name').textContent = "Error al cargar configuración";
+                    console.error('Error cargando site.json:', error);
                 });
         });
     </script>
